@@ -17,29 +17,30 @@ export default function TechnicalSolutions() {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-          observer.unobserve(entry.target)
-        }
-      },
-      {
-        threshold: 0.1,
-        rootMargin: "0px 0px -100px 0px",
-      },
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        setIsVisible(true)
+        observer.unobserve(entry.target)
       }
+    },
+    {
+      threshold: 0.1,
+      rootMargin: "0px 0px -100px 0px",
+    },
+  )
+
+  const sectionElement = sectionRef.current; // Store the current value in a variable
+  if (sectionElement) {
+    observer.observe(sectionElement)
+  }
+
+  return () => {
+    if (sectionElement) {
+      observer.unobserve(sectionElement)
     }
-  }, [])
+  }
+}, [])
 
   return (
     <section
@@ -69,7 +70,7 @@ export default function TechnicalSolutions() {
 
               <p className="text-gray-600 mb-8 leading-relaxed">
                 There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration
-                in that some form by injected humour or randomised words which don't look even slightly believable.
+                in that some form by injected humour or randomised words which don`t look even slightly believable.
               </p>
 
               {/* Features List */}

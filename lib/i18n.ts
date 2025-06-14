@@ -81,7 +81,7 @@ export const translations: Record<Locale, Translation> = {
       aboutUs: "БИДНИЙ ТУХАЙ",
       services: "ҮЙЛЧИЛГЭЭ",
       pages: "ХУУДАС",
-      blog: "БЛОГ",
+      blog: "МЭДЭЭ",
       contactUs: "ХОЛБОО БАРИХ",
       getQuote: "ҮНИЙН САНАЛ АВАХ",
     },
