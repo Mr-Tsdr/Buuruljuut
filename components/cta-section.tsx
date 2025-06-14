@@ -8,30 +8,30 @@ export default function CtaSection() {
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      if (entry.isIntersecting) {
-        setIsVisible(true)
-        observer.unobserve(entry.target)
-      }
-    },
-    {
-      threshold: 0.1,
-      rootMargin: "0px 0px -100px 0px",
-    },
-  )
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          observer.unobserve(entry.target)
+        }
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px 0px -100px 0px",
+      },
+    )
 
-  const sectionElement = sectionRef.current; // Store the current value in a variable
-  if (sectionElement) {
-    observer.observe(sectionElement)
-  }
-
-  return () => {
+    const sectionElement = sectionRef.current; // Store the current value in a variable
     if (sectionElement) {
-      observer.unobserve(sectionElement)
+      observer.observe(sectionElement)
     }
-  }
-}, [])
+
+    return () => {
+      if (sectionElement) {
+        observer.unobserve(sectionElement)
+      }
+    }
+  }, [sectionRef])
 
   return (
     <section ref={sectionRef} className="py-16 bg-[#0a1631] relative overflow-hidden">

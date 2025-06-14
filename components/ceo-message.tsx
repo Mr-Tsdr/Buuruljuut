@@ -38,12 +38,12 @@ export default function CeoMessage() {
             <p className="text-gray-600 mb-8 leading-relaxed">
               There are many variations of passages of Lorem Ipsum available but the majority 
               have suffered alteration in that some form by injected humour or randomised that 
-              words which don`t look even slightly believable.
+              words which don&apos;t look even slightly believable.
             </p>
             <div className="mb-3">
               <Image
                 src="/images/bg2.jpeg"
-                alt="CEO Signature"
+                alt="background image"
                 className="h-12 object-contain"
                 width={200}
                 height={200}
@@ -70,7 +70,6 @@ export default function CeoMessage() {
                 className="w-full h-full"
                 src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
                 title="Company Video"
-                frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               ></iframe>

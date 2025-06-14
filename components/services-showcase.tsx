@@ -61,19 +61,30 @@ export default function ServicesShowcase() {
         <div className="flex justify-between items-center mb-12">
           <div>
             <div className="flex items-center mb-2">
-              <div className="w-8 h-8 mr-3">
-                <div className="w-full h-0.5 bg-gray-300 transform rotate-45"></div>
-                <div className="w-full h-0.5 bg-gray-300 transform -rotate-45 mt-1"></div>
-              </div>
-              <p className="text-orange-500 font-medium">What We Offer</p>
+              <div className="flex items-center space-x-3">
+      {/* Diagonal lines block */}
+      <div className="relative w-8 h-8">
+        {Array.from({ length: 5 }).map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-[2px] h-full bg-gray-400"
+            style={{
+              transform: `rotate(45deg)`,
+              left: `${i * 3}px`,
+            }}
+          ></div>
+        ))}
+      </div>
+      </div>
+              <p className="text-orange-500 font-medium">Юуг санал болгож байна бэ?</p>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Our Services</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Бидний үйлчилгээ</h2>
           </div>
           <Link
             href="/services"
-            className="bg-orange-500 text-white px-6 py-3 font-medium hover:bg-orange-600 transition-colors hidden md:block"
+            className="bg-orange-500 text-white px-6 py-3 font-medium hover:bg-orange-600 transition-colors hidden md:block rounded-sm"
           >
-            ALL SERVICES
+            Бүх үйлчилгээ
           </Link>
         </div>
 

@@ -49,13 +49,16 @@ const comments = [
   },
 ]
 
-export default function BlogPost() {
+export default function BlogPost({ params }: { params: { id: string } }) {
   const [commentForm, setCommentForm] = useState({
     comment: "",
     name: "",
     email: "",
     website: "",
   })
+
+  // TODO: Fetch blog post data using postId
+  console.log("Loading blog post with ID:", params.id)
 
   const handleCommentSubmit = (e: React.FormEvent) => {
     e.preventDefault()

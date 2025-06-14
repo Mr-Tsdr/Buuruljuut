@@ -29,7 +29,7 @@ const carouselData: CarouselSlide[] = [
       </>
     ),
     description:
-      "We provide comprehensive industrial solutions with a team of experienced professionals dedicated to excellence and innovation in every project we undertake.",
+      "“Цэцэнс Майнинг энд Энержи” ХХК нь өөрийн эзэмшлийн ашигт малтмал ашиглалтын тусгай зөвшөөрөлтэй Бөөрөлжүүтийн талын хүрэн нүүрсний ордод түшиглэн “Бөөрөлжүүтийн 2x150 МВт-ын Цахилгаан станц, нүүрсний уурхайн цогц төсөл”-ийг 2011 оноос хойш үе шаттайгаар амжилттай хэрэгжүүлэн ажиллаж байна.",
     image: "/images/bg1.jpg",
     buttonText1: "OUR PROJECTS",
     buttonLink1: "/projects",

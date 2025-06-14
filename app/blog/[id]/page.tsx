@@ -14,7 +14,7 @@ export default function BlogDetailPage({ params }: { params: { id: string } }) {
           <div className="flex flex-col lg:flex-row gap-8">
             {/* Main Content */}
             <div className="lg:w-2/3">
-              <BlogPost postId={params.id} />
+              <BlogPost params={params} />
             </div>
 
             {/* Sidebar */}

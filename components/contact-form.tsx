@@ -103,7 +103,7 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="bg-orange-500 text-white px-8 py-3 font-medium hover:bg-orange-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed rounded-sm"
+          className="bg-orange-500 text-white px-8 py-3 font-medium hover:bg-orange-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed rounded-sm cursor-pointer"
         >
           {isSubmitting ? "SENDING..." : "Хүсэлт илгээх"}
         </button>

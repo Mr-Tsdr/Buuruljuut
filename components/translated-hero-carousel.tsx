@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { cn } from "@/lib/utils"
@@ -77,16 +77,7 @@ export default function TranslatedHeroCarousel() {
     },
   ]
 
-  // Auto-play functionality
-  useEffect(() => {
-    const interval = setInterval(() => {
-      goToNextSlide()
-    }, 7000)
-
-    return () => clearInterval(interval)
-  }, [currentSlide])
-
-  const goToSlide = (index: number) => {
+  const goToSlide = useCallback((index: number) => {
     if (isTransitioning || index === currentSlide) return
 
     setIsTransitioning(true)
@@ -95,12 +86,17 @@ export default function TranslatedHeroCarousel() {
     setTimeout(() => {
       setIsTransitioning(false)
     }, 500)
-  }
+  }, [isTransitioning, currentSlide])
 
-  const goToNextSlide = () => {
-    const nextSlide = (currentSlide + 1) % carouselData.length
-    goToSlide(nextSlide)
-  }
+  // Auto-play functionality
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const nextSlide = (currentSlide + 1) % carouselData.length
+      goToSlide(nextSlide)
+    }, 7000)
+
+    return () => clearInterval(interval)
+  }, [currentSlide, carouselData.length, goToSlide])
 
   return (
     <div className="relative h-[600px] bg-[#0a1631] overflow-hidden">
