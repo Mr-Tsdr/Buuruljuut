@@ -40,14 +40,14 @@ const carouselData: CarouselSlide[] = [
     id: 2,
     title: (
       <>
-        <span className="text-orange-500">Dustrial</span> - Solutions
+        <span className="text-orange-500">Бид</span> - Ирээдүйг
         <br />
-        For all Industrial Business
+        асаана.
       </>
     ),
     description:
       "There are many variations of passages of Lorem Ipsum available but the dummy majority have suffered dumm to alteration in some form by injected dummy now.",
-    image: "/placeholder.svg?height=1080&width=1920&text=Industrial+Site+1",
+    image: "/images/bg3.jpg",
     buttonText1: "OUR SERVICES",
     buttonLink1: "/services",
     buttonText2: "CONTACT US",
@@ -57,14 +57,14 @@ const carouselData: CarouselSlide[] = [
     id: 3,
     title: (
       <>
-        <span className="text-orange-500">Quality</span> & Safety
+        <span className="text-orange-500">Оролцогч талуудын</span> & тэнцвэртэй харилцааг
         <br />
-        Our Top Priorities
+        эрхэмлэдэг.
       </>
     ),
     description:
       "With decades of experience in the industrial sector, we maintain the highest standards of quality and safety in all our operations and services.",
-    image: "/placeholder.svg?height=1080&width=1920&text=Industrial+Site+3",
+    image: "/images/bg4.jpg",
     buttonText1: "ABOUT US",
     buttonLink1: "/about",
     buttonText2: "OUR TEAM",
@@ -80,7 +80,7 @@ export default function HeroCarousel() {
   useEffect(() => {
     const interval = setInterval(() => {
       goToNextSlide()
-    }, 7000) // Change slide every 7 seconds
+    }, 7000) 
 
     return () => clearInterval(interval)
   }, [currentSlide])
@@ -91,7 +91,6 @@ export default function HeroCarousel() {
     setIsTransitioning(true)
     setCurrentSlide(index)
 
-    // Reset transition state after animation completes
     setTimeout(() => {
       setIsTransitioning(false)
     }, 500)

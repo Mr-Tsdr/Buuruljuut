@@ -76,7 +76,7 @@ export const translations: Record<Locale, Translation> = {
     header: {
       call: "Утас: +(976) 11-316117",
       email: "И-мэйл: info@tme.mn",
-      address: "Хаяг: 16 Factory Street, California",
+      address: "Хаяг: Парк плэйс оффис, #402",
       home: "НҮҮР",
       aboutUs: "БИДНИЙ ТУХАЙ",
       services: "ҮЙЛЧИЛГЭЭ",
@@ -108,7 +108,7 @@ export const translations: Record<Locale, Translation> = {
     header: {
       call: "电话: + (123) 1800-567-8990",
       email: "邮箱: office@example.com",
-      address: "地址: 16 Factory Street, California",
+      address: "地址: Парк плэйс оффис, #402",
       home: "首页",
       aboutUs: "关于我们",
       services: "",

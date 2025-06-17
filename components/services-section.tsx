@@ -1,28 +1,28 @@
 "use client";
 
 import Image from "next/image";
-import { Car, Cog, Truck, Droplet } from "lucide-react";
+import { Sprout, UtilityPole, Plug, UserRoundPlus } from "lucide-react";
 import { motion } from "framer-motion";
 
 const services = [
   {
-    icon: Car,
-    title: "Automobile Manufacturing",
+    icon: Sprout,
+    title: "Байгаль орчинд ээлтэй технологи",
     desc: "There are many variations of passages of Lorem Ipsum available but majority have suffered alteration.",
   },
   {
-    icon: Cog,
-    title: "Mechanical Engineering",
+    icon: UtilityPole,
+    title: "Эрчим хүчний тариф хямд, найдвартай эх үүсвэртэй болно",
     desc: "There are many variations of passages of Lorem Ipsum available but majority have suffered alteration.",
   },
   {
-    icon: Truck,
-    title: "Construction & Engineering",
+    icon: Plug,
+    title: "Эрчим хүчээр хараат бус улс болно",
     desc: "There are many variations of passages of Lorem Ipsum available but majority have suffered alteration.",
   },
   {
-    icon: Droplet,
-    title: "Oil & Gas Energy",
+    icon: UserRoundPlus,
+    title: "Ажлын байр нэмэгдэнэ",
     desc: "There are many variations of passages of Lorem Ipsum available but majority have suffered alteration.",
   },
 ];
@@ -70,7 +70,7 @@ export default function ServicesSection() {
                 <span className="text-orange-500 font-medium">Welcome to</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-                Industry & Factory
+                Монгол улсад гарах 5 том өөрчлөлт
               </h2>
             </div>
 

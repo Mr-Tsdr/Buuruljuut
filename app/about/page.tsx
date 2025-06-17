@@ -1,6 +1,3 @@
-import ContactForm from "@/components/contact-form"
-import ContactInfo from "@/components/contact-info"
-import ContactMap from "@/components/contact-map"
 import Footer from "@/components/footer"
 import StickyHeader from "@/components/sticky-header"
 import Link from "next/link"
@@ -22,33 +19,21 @@ export default function ContactPage() {
 
         <div className="container mx-auto px-4 md:px-8 relative z-10 h-full flex flex-col justify-center">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">Contact Us</h1>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">Монгол улсын
+
+<span className="text-orange-500"></span> - <span className="text-orange-500">эрчим хүчний
+шинэ эх үүсвэр.</span>
+</h1>
             <nav className="text-white text-lg">
               <Link href="/" className="hover:text-orange-500 transition-colors">
-                Industrial
+                Нүүр хуудас
               </Link>
               <span className="mx-2">›</span>
-              <span className="text-orange-500">Contact us</span>
+              <span className="text-orange-500">Бидний тухай</span>
             </nav>
           </div>
         </div>
       </section>
-
-      {/* Contact Content */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 md:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Information */}
-            <ContactInfo />
-
-            {/* Contact Form */}
-            <ContactForm />
-          </div>
-        </div>
-      </section>
-
-      {/* Map Section */}
-      <ContactMap />
 
       {/* Footer */}
       <Footer />
