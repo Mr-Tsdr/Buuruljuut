@@ -63,7 +63,7 @@ export default function TechnicalSolutions() {
               <p className="text-gray-600 mb-8 leading-relaxed">
                 There are many variations of passages of Lorem Ipsum available
                 but the majority have suffered alteration in that some form by
-                injected humour or randomised words which don`t look even
+                injected humour or randomised words which look even
                 slightly believable.
               </p>
 
