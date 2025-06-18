@@ -5,11 +5,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Play, X } from "lucide-react";
 
 export default function CeoMessage() {
-  /* ----------------------------- state & helpers ---------------------------- */
   const [open, setOpen] = useState(false);
   const close = useCallback(() => setOpen(false), []);
 
-  /* ESC-key close */
+  /* ───────────── escape-key closes modal ───────────── */
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && close();
@@ -17,12 +16,10 @@ export default function CeoMessage() {
     return () => window.removeEventListener("keydown", onKey);
   }, [open, close]);
 
-  /* ------------------------------- component -------------------------------- */
   return (
     <section className="relative overflow-hidden bg-white">
-      {/* container */}
       <div className="mx-auto flex max-w-7xl flex-col lg:flex-row">
-        {/* LEFT --------------------------------------------------------------- */}
+        {/* LEFT ──────────────────────────────────────── */}
         <motion.div
           initial={{ opacity: 0, x: -32 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -40,33 +37,33 @@ export default function CeoMessage() {
               Бөөрөлжүүт
             </h2>
 
+            {/* ✅ apostrophe escaped → no react/no-unescaped-entities warning */}
             <p className="leading-relaxed text-gray-600">
               There are many variations of passages of Lorem Ipsum available,
               but the majority have suffered alteration in some form by injected
-              humour or randomised words which do not look even slightly
-              believable.
+              humour or randomised words which do&nbsp;not look even slightly
+              believable&nbsp;and therefore don&apos;t hold up to&nbsp;scrutiny.
             </p>
           </div>
         </motion.div>
 
-        {/* RIGHT -------------------------------------------------------------- */}
+        {/* RIGHT ─────────────────────────────────────── */}
         <motion.div
           initial={{ opacity: 0, x: 32 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
           viewport={{ once: true }}
-          className="relative flex h-[340px] w-full items-center justify-center overflow-hidden sm:h-[420px] lg:h-auto lg:w-1/2"
+          className="relative flex h-[340px] w-full items-center justify-center
+                     overflow-hidden sm:h-[420px] lg:h-auto lg:w-1/2"
         >
-          {/* background image with angled clip-path */}
+          {/* angled background image */}
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            className="absolute inset-0 bg-cover bg-center"
             style={{
               backgroundImage: "url('/images/workshop.jpg')",
-              WebkitClipPath: "polygon(38% 0, 100% 0, 100% 100%, 62% 100%)",
               clipPath: "polygon(38% 0, 100% 0, 100% 100%, 62% 100%)",
             }}
           >
-            {/* gradient overlay */}
             <div className="h-full w-full bg-gradient-to-r from-black/50 to-black/0" />
           </div>
 
@@ -74,11 +71,13 @@ export default function CeoMessage() {
           <motion.button
             onClick={() => setOpen(true)}
             whileTap={{ scale: 0.9 }}
-            className="relative z-10 flex h-20 w-20 items-center justify-center rounded-full bg-orange-500 text-white shadow-lg outline-none ring-4 ring-white/40 transition hover:bg-orange-600 focus-visible:ring-4 focus-visible:ring-orange-400"
+            className="relative z-10 flex h-20 w-20 items-center justify-center
+                       rounded-full bg-orange-500 text-white shadow-lg outline-none
+                       ring-4 ring-white/40 transition hover:bg-orange-600
+                       focus-visible:ring-4 focus-visible:ring-orange-400"
             aria-label="Play company video"
           >
             <Play size={30} className="ml-1" />
-            {/* idle pulse */}
             <motion.span
               animate={{ scale: [1, 1.3, 1], opacity: [0.8, 0, 0.8] }}
               transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
@@ -88,26 +87,27 @@ export default function CeoMessage() {
         </motion.div>
       </div>
 
-      <AnimatePresence>
-        {open && (
-          <VideoModal close={close} />
-        )}
-      </AnimatePresence>
+      {/* MODAL ───────────────────────────────────────── */}
+      <AnimatePresence>{open && <VideoModal close={close} />}</AnimatePresence>
     </section>
   );
 }
 
+/* ================= VideoModal ===================== */
+
 type ModalProps = { close: () => void };
 
 function VideoModal({ close }: ModalProps) {
-  // Close when clicking backdrop
   const backdropClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) close();
   };
 
+  // embed URL to avoid “refused to connect”
+  const YT_ID = "DHCUwTQI-I4";
+  const PARAMS = "autoplay=1&start=3&rel=0&modestbranding=1&playsinline=1";
+
   return (
     <motion.div
-      key="backdrop"
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 md:p-8"
       onClick={backdropClick}
       role="dialog"
@@ -117,7 +117,6 @@ function VideoModal({ close }: ModalProps) {
       exit={{ opacity: 0 }}
     >
       <motion.div
-        key="modal"
         className="relative w-full max-w-5xl overflow-hidden rounded-lg shadow-xl"
         initial={{ scale: 0.9 }}
         animate={{ scale: 1 }}
@@ -126,19 +125,21 @@ function VideoModal({ close }: ModalProps) {
       >
         <div className="aspect-[16/9]">
           <iframe
-            className="h-full w-full"
-            src="https://www.youtube.com/watch?v=DHCUwTQI-I4&t=3s"
+            className="h-full w-full rounded-lg"
+            src={`https://www.youtube-nocookie.com/embed/${YT_ID}?${PARAMS}`}
             title="Company video"
-            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
+            loading="lazy"
           />
         </div>
 
-        {/* close */}
         <button
           onClick={close}
           aria-label="Close video"
-          className="group absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-gray-800 backdrop-blur hover:bg-white"
+          className="group absolute right-3 top-3 flex h-9 w-9 items-center
+                     justify-center rounded-full bg-white/90 text-gray-800
+                     backdrop-blur hover:bg-white"
         >
           <X size={22} />
           <span className="sr-only">Close</span>
@@ -147,3 +148,7 @@ function VideoModal({ close }: ModalProps) {
     </motion.div>
   );
 }
+
+/* ───────── Optional ESLint suppression for a raw <img> elsewhere ───────── */
+/* eslint-disable-next-line @next/next/no-img-element */
+// <img src="/legacy/logo.png" alt="Company logo" />

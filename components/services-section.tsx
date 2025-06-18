@@ -114,9 +114,9 @@ export default function ServicesSection() {
               className="grid grid-cols-3 gap-4 mt-10 pt-6 border-t"
             >
               {[ 
-                { num: "26", label1: "Years", label2: "Experience" },
-                { num: "758", label1: "Project", label2: "Completed" },
-                { num: "1769", label1: "Expert", label2: "Employed" },
+                { num: "14", label1: "Жилийн", label2: "Туршлага" },
+                { num: "25", label1: "Гүйцэтгэсэн", label2: "Төслүүд" },
+                { num: "999", label1: "Нийт", label2: "Ажилчид" },
               ].map((stat, idx) => (
                 <div key={idx} className="text-center">
                   <p className="text-4xl font-bold">{stat.num}</p>

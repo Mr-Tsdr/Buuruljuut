@@ -8,7 +8,7 @@ const services = [
     title: "Construction & Engineering",
     description:
       "There are many variations of passages of Lorem Ipsum available have suffered alteration in at that some form injected",
-    image: "/placeholder.svg?height=300&width=400&text=Construction+Site",
+    image: "/https://unsplash.com/photos/a-bunch-of-balloons-that-are-shaped-like-email-7NT4EDSI5Ok",
     icon: Wrench,
   },
   {
@@ -53,6 +53,8 @@ const services = [
   },
 ]
 
+const visible = services.slice(0, 3)
+
 export default function ServicesShowcase() {
   return (
     <section className="py-16 bg-gray-50">
@@ -90,7 +92,7 @@ export default function ServicesShowcase() {
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service) => {
+          {visible.map((service) => {
             const IconComponent = service.icon
             return (
               <div
