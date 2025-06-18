@@ -80,7 +80,7 @@ export default function TechnicalSolutions() {
                 href="/contact"
                 className="inline-block bg-orange-500 px-6 py-3 font-medium text-white transition-colors hover:bg-orange-600"
               >
-                CONTACT&nbsp;US
+                CONTACT US
               </Link>
             </div>
           </div>
