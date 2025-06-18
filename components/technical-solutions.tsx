@@ -8,7 +8,7 @@ export default function TechnicalSolutions() {
   const features = [
     "There are many variations of dummy of Lorem Ipsum.",
     "There are many variations of passages.",
-    "It's are readily variations at dummy ready.",
+    "It&apos;s are readily variations at dummy ready.",
     "That are many variations is passages text.",
     "There are many variations of text.",
   ];
