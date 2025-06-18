@@ -41,8 +41,8 @@ export default function CeoMessage() {
             <p className="leading-relaxed text-gray-600">
               There are many variations of passages of Lorem Ipsum available,
               but the majority have suffered alteration in some form by injected
-              humour or randomised words which do&nbsp;not look even slightly
-              believable&nbsp;and therefore don&apos;t hold up to&nbsp;scrutiny.
+              humour or randomised words which do not look even slightly
+              believable and therefore dont hold up scrutiny.
             </p>
           </div>
         </motion.div>

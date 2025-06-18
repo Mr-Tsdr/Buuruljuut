@@ -8,7 +8,7 @@ export default function TechnicalSolutions() {
   const features = [
     "There are many variations of dummy of Lorem Ipsum.",
     "There are many variations of passages.",
-    "It&apos;s are readily variations at dummy ready.",
+    "It`s are readily variations at dummy ready.",
     "That are many variations is passages text.",
     "There are many variations of text.",
   ];
@@ -67,7 +67,7 @@ export default function TechnicalSolutions() {
               <p className="text-gray-600 mb-8 leading-relaxed">
                 There are many variations of passages of Lorem Ipsum available
                 but the majority have suffered alteration in that some form by
-                injected humour or randomised words which don&apos;t look even
+                injected humour or randomised words which don`t look even
                 slightly believable.
               </p>
 
