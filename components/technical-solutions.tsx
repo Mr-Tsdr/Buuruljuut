@@ -1,22 +1,19 @@
 "use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 
 export default function TechnicalSolutions() {
   const features = [
-    "There are many variations of dummy of Lorem Ipsum.",
-    "There are many variations of passages.",
-    "It`s are readily variations at dummy ready.",
-    "That are many variations is passages text.",
-    "There are many variations of text.",
+    'There are many variations of dummy of Lorem Ipsum.',
+    'There are many variations of passages.',
+    'It`s are readily variations at dummy ready.',
+    'That are many variations is passages text.',
+    'There are many variations of text.',
   ];
 
   const sectionRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
-
-  /* ─────────── intersection-observer (runs once) ─────────── */
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -28,13 +25,13 @@ export default function TechnicalSolutions() {
       { threshold: 0.1, rootMargin: "0px 0px -100px 0px" }
     );
 
-    const node = sectionRef.current;      // capture ref value
+    const node = sectionRef.current;     
     if (node) observer.observe(node);
 
     return () => {
-      if (node) observer.unobserve(node); // use same captured node
+      if (node) observer.unobserve(node); 
     };
-  }, []); // ← empty dependency array = no exhaustive-deps warning
+  }, []); 
 
   return (
     <section
@@ -45,7 +42,6 @@ export default function TechnicalSolutions() {
     >
       <div className="container mx-auto px-4 md:px-8">
         <div className="flex flex-col lg:flex-row items-center">
-          {/* LEFT (content) */}
           <div
             className={`w-full lg:w-1/2 lg:pr-12 mb-10 lg:mb-0 transition-all duration-1000 delay-300 ${
               isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-20"
@@ -71,7 +67,6 @@ export default function TechnicalSolutions() {
                 slightly believable.
               </p>
 
-              {/* features list */}
               <ul className="space-y-3 mb-8">
                 {features.map((feature) => (
                   <li key={feature} className="flex items-start">
@@ -90,14 +85,13 @@ export default function TechnicalSolutions() {
             </div>
           </div>
 
-          {/* RIGHT (image) */}
           <div
             className={`w-full lg:w-1/2 transition-all duration-1000 delay-500 ${
               isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-20"
             }`}
           >
             <Image
-              src="/placeholder.svg?height=400&width=600&text=Professional+Team"
+              src="/images/industrial-team.jpg"
               alt="Professional industrial team"
               width={600}
               height={400}

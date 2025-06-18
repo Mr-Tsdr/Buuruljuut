@@ -8,7 +8,6 @@ export default function CeoMessage() {
   const [open, setOpen] = useState(false);
   const close = useCallback(() => setOpen(false), []);
 
-  /* ───────────── escape-key closes modal ───────────── */
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && close();
@@ -19,7 +18,6 @@ export default function CeoMessage() {
   return (
     <section className="relative overflow-hidden bg-white">
       <div className="mx-auto flex max-w-7xl flex-col lg:flex-row">
-        {/* LEFT ──────────────────────────────────────── */}
         <motion.div
           initial={{ opacity: 0, x: -32 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -37,7 +35,7 @@ export default function CeoMessage() {
               Бөөрөлжүүт
             </h2>
 
-            {/* ✅ apostrophe escaped → no react/no-unescaped-entities warning */}
+           
             <p className="leading-relaxed text-gray-600">
               There are many variations of passages of Lorem Ipsum available,
               but the majority have suffered alteration in some form by injected
@@ -47,7 +45,6 @@ export default function CeoMessage() {
           </div>
         </motion.div>
 
-        {/* RIGHT ─────────────────────────────────────── */}
         <motion.div
           initial={{ opacity: 0, x: 32 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -56,7 +53,6 @@ export default function CeoMessage() {
           className="relative flex h-[340px] w-full items-center justify-center
                      overflow-hidden sm:h-[420px] lg:h-auto lg:w-1/2"
         >
-          {/* angled background image */}
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{
@@ -67,7 +63,6 @@ export default function CeoMessage() {
             <div className="h-full w-full bg-gradient-to-r from-black/50 to-black/0" />
           </div>
 
-          {/* play button */}
           <motion.button
             onClick={() => setOpen(true)}
             whileTap={{ scale: 0.9 }}
@@ -87,13 +82,10 @@ export default function CeoMessage() {
         </motion.div>
       </div>
 
-      {/* MODAL ───────────────────────────────────────── */}
       <AnimatePresence>{open && <VideoModal close={close} />}</AnimatePresence>
     </section>
   );
 }
-
-/* ================= VideoModal ===================== */
 
 type ModalProps = { close: () => void };
 
@@ -102,7 +94,6 @@ function VideoModal({ close }: ModalProps) {
     if (e.target === e.currentTarget) close();
   };
 
-  // embed URL to avoid “refused to connect”
   const YT_ID = "DHCUwTQI-I4";
   const PARAMS = "autoplay=1&start=3&rel=0&modestbranding=1&playsinline=1";
 
@@ -149,6 +140,3 @@ function VideoModal({ close }: ModalProps) {
   );
 }
 
-/* ───────── Optional ESLint suppression for a raw <img> elsewhere ───────── */
-/* eslint-disable-next-line @next/next/no-img-element */
-// <img src="/legacy/logo.png" alt="Company logo" />
