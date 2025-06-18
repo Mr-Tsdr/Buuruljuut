@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
-import { Sprout, UtilityPole, Plug, UserRoundPlus } from "lucide-react";
 import { motion } from "framer-motion";
+import { Plug, Presentation, Shapes, Sprout, UserRoundPlus, UtilityPole } from "lucide-react";
+import Image from "next/image";
 
 const services = [
   {
@@ -25,6 +25,11 @@ const services = [
     title: "Ажлын байр нэмэгдэнэ",
     desc: "There are many variations of passages of Lorem Ipsum available but majority have suffered alteration.",
   },
+  {
+    icon: Presentation,
+    title: "Мега төслүүд эрчим хүчээр хангагдана",
+    desc: "There are many variations of passages of Lorem Ipsum available but majority have suffered alteration.",
+  },
 ];
 
 export default function ServicesSection() {
@@ -41,14 +46,13 @@ export default function ServicesSection() {
             viewport={{ once: true }}
             className="relative w-full lg:w-5/12 mb-10 lg:mb-0"
           >
-            <div className="relative h-[500px] lg:h-[600px] shadow-lg rounded-lg overflow-hidden">
+            <div className="relative h-[500px] lg:h-[800px] shadow-lg rounded-sm overflow-hidden">
               <Image
                 src="/images/bg2.jpeg"
                 alt="Modern industrial building"
                 fill
-                className="object-cover"
+                className="object-fit h-[600px]"
               />
-              <div className="absolute top-0 right-[-8px] w-2 h-full bg-orange-500"></div>
             </div>
           </motion.div>
 
@@ -64,13 +68,13 @@ export default function ServicesSection() {
             <div className="mb-10">
               <div className="flex items-center mb-2">
                 <div className="relative w-6 h-6 mr-2">
-                  <div className="absolute w-full h-0.5 bg-gray-400 rotate-45"></div>
-                  <div className="absolute w-full h-0.5 bg-gray-400 -rotate-45"></div>
+                  <Shapes className="absolute top-0 left-0 w-6 h-6 text-orange-500" />
                 </div>
-                <span className="text-orange-500 font-medium">Welcome to</span>
+                <span className="text-orange-500 font-medium">Тавтай морил</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-                Монгол улсад гарах 5 том өөрчлөлт
+                Монгол улсад гарах 
+                <br /> <span className="text-orange-500">5 том өөрчлөлт</span>
               </h2>
             </div>
 

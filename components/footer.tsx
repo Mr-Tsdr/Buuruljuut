@@ -58,7 +58,7 @@ export default function Footer() {
             {/* Logo */}
             <Link href="/" className="flex items-center mb-6 md:mb-0">
               <div className="flex items-center">
-                <Image src="/images/logo.png" alt="Logo" width={150} height={50} />
+                <Image src="/images/logo.svg" alt="Logo" width={150} height={50} />
               </div>
             </Link>
 

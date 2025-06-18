@@ -1,101 +1,149 @@
 "use client";
-import { motion } from "framer-motion";
+
+import { useState, useCallback, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Play, X } from "lucide-react";
-import { useState } from "react";
 
 export default function CeoMessage() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  /* ----------------------------- state & helpers ---------------------------- */
+  const [open, setOpen] = useState(false);
+  const close = useCallback(() => setOpen(false), []);
 
-  const handlePlayVideo = () => {
-    setIsModalOpen(true);
-  };
+  /* ESC-key close */
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && close();
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open, close]);
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
-
+  /* ------------------------------- component -------------------------------- */
   return (
-    <section className="relative bg-white overflow-hidden">
-      <div className="flex flex-col lg:flex-row items-stretch">
-        {/* LEFT CONTENT */}
+    <section className="relative overflow-hidden bg-white">
+      {/* container */}
+      <div className="mx-auto flex max-w-7xl flex-col lg:flex-row">
+        {/* LEFT --------------------------------------------------------------- */}
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
+          initial={{ opacity: 0, x: -32 }}
           whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1.2, ease: "easeInOut" }}
+          transition={{ duration: 0.9, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="w-full lg:w-1/2 px-6 md:px-12 lg:px-16 py-16 flex items-center"
+          className="flex w-full items-center px-6 py-16 sm:px-12 lg:w-1/2 lg:px-16"
         >
           <div className="max-w-lg">
-            <div className="flex items-center mb-4">
-              <div className="relative w-6 h-6 mr-2">
-                <Play className="absolute top-0 left-0 w-6 h-6 text-orange-500" />
-              </div>
-              <p className="text-orange-500 font-medium">Том мөрөөдөл</p>
+            <div className="mb-4 flex items-center space-x-2">
+              <Play className="h-6 w-6 text-orange-500" />
+              <p className="font-medium text-orange-500">Том мөрөөдөл</p>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0a1631] mb-6">
+
+            <h2 className="mb-6 text-4xl font-extrabold tracking-tight text-[#0a1631] sm:text-5xl">
               Бөөрөлжүүт
             </h2>
-            <p className="text-gray-600 mb-8 leading-relaxed">
-              There are many variations of passages of Lorem Ipsum available but the majority
-              have suffered alteration in that some form by injected humour or randomised that
-              words which don&apos;t look even slightly believable.
+
+            <p className="leading-relaxed text-gray-600">
+              There are many variations of passages of Lorem Ipsum available,
+              but the majority have suffered alteration in some form by injected
+              humour or randomised words which do not look even slightly
+              believable.
             </p>
           </div>
         </motion.div>
 
-        {/* RIGHT IMAGE + PLAY BUTTON */}
+        {/* RIGHT -------------------------------------------------------------- */}
         <motion.div
-          initial={{ opacity: 0, x: 50 }}
+          initial={{ opacity: 0, x: 32 }}
           whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1.2, ease: "easeInOut", delay: 0.2 }}
+          transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
           viewport={{ once: true }}
-          className="relative w-full lg:w-1/2 h-[400px] lg:h-auto flex items-center justify-center overflow-hidden"
+          className="relative flex h-[340px] w-full items-center justify-center overflow-hidden sm:h-[420px] lg:h-auto lg:w-1/2"
         >
+          {/* background image with angled clip-path */}
           <div
-            className="absolute inset-0"
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
-              clipPath: "polygon(40% 0, 100% 0, 100% 100%, 60% 100%)",
-              backgroundImage:
-                "linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0)), url('/images/workshop.jpg')",
-              backgroundSize: "cover",
-              backgroundPosition: "center"
+              backgroundImage: "url('/images/workshop.jpg')",
+              WebkitClipPath: "polygon(38% 0, 100% 0, 100% 100%, 62% 100%)",
+              clipPath: "polygon(38% 0, 100% 0, 100% 100%, 62% 100%)",
             }}
-          ></div>
-
-          <motion.button
-            onClick={handlePlayVideo}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            className="relative z-10 bg-orange-500 hover:bg-orange-600 transition-all rounded-full w-16 h-16 flex items-center justify-center focus:outline-none shadow-lg"
-            aria-label="Play video"
           >
-            <Play size={28} className="text-white ml-1" />
+            {/* gradient overlay */}
+            <div className="h-full w-full bg-gradient-to-r from-black/50 to-black/0" />
+          </div>
+
+          {/* play button */}
+          <motion.button
+            onClick={() => setOpen(true)}
+            whileTap={{ scale: 0.9 }}
+            className="relative z-10 flex h-20 w-20 items-center justify-center rounded-full bg-orange-500 text-white shadow-lg outline-none ring-4 ring-white/40 transition hover:bg-orange-600 focus-visible:ring-4 focus-visible:ring-orange-400"
+            aria-label="Play company video"
+          >
+            <Play size={30} className="ml-1" />
+            {/* idle pulse */}
+            <motion.span
+              animate={{ scale: [1, 1.3, 1], opacity: [0.8, 0, 0.8] }}
+              transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+              className="absolute inset-0 -z-10 rounded-full bg-orange-500"
+            />
           </motion.button>
         </motion.div>
       </div>
 
-      {/* VIDEO MODAL */}
-      {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center z-50">
-          <div className="relative w-full max-w-5xl aspect-video">
-            <iframe
-              className="w-full h-full rounded-lg"
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
-              title="Company Video"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-            <button
-              onClick={handleCloseModal}
-              className="absolute top-2 right-2 bg-white rounded-full p-1 shadow hover:bg-gray-200"
-              aria-label="Close video"
-            >
-              <X size={20} className="text-gray-800" />
-            </button>
-          </div>
-        </div>
-      )}
+      <AnimatePresence>
+        {open && (
+          <VideoModal close={close} />
+        )}
+      </AnimatePresence>
     </section>
+  );
+}
+
+type ModalProps = { close: () => void };
+
+function VideoModal({ close }: ModalProps) {
+  // Close when clicking backdrop
+  const backdropClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) close();
+  };
+
+  return (
+    <motion.div
+      key="backdrop"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 md:p-8"
+      onClick={backdropClick}
+      role="dialog"
+      aria-modal="true"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      <motion.div
+        key="modal"
+        className="relative w-full max-w-5xl overflow-hidden rounded-lg shadow-xl"
+        initial={{ scale: 0.9 }}
+        animate={{ scale: 1 }}
+        exit={{ scale: 0.9, opacity: 0 }}
+        transition={{ type: "spring", stiffness: 260, damping: 20 }}
+      >
+        <div className="aspect-[16/9]">
+          <iframe
+            className="h-full w-full"
+            src="https://www.youtube.com/watch?v=DHCUwTQI-I4&t=3s"
+            title="Company video"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
+            allowFullScreen
+          />
+        </div>
+
+        {/* close */}
+        <button
+          onClick={close}
+          aria-label="Close video"
+          className="group absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-gray-800 backdrop-blur hover:bg-white"
+        >
+          <X size={22} />
+          <span className="sr-only">Close</span>
+        </button>
+      </motion.div>
+    </motion.div>
   );
 }

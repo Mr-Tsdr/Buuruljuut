@@ -31,10 +31,10 @@ const carouselData: CarouselSlide[] = [
     description:
       "“Цэцэнс Майнинг энд Энержи” ХХК нь өөрийн эзэмшлийн ашигт малтмал ашиглалтын тусгай зөвшөөрөлтэй Бөөрөлжүүтийн талын хүрэн нүүрсний ордод түшиглэн “Бөөрөлжүүтийн 2x150 МВт-ын Цахилгаан станц, нүүрсний уурхайн цогц төсөл”-ийг 2011 оноос хойш үе шаттайгаар амжилттай хэрэгжүүлэн ажиллаж байна.",
     image: "/images/bg1.jpg",
-    buttonText1: "OUR PROJECTS",
-    buttonLink1: "/projects",
-    buttonText2: "GET A QUOTE",
-    buttonLink2: "/quote",
+    buttonText1: "Гүйцэтгэсэн төслүүд",
+    buttonLink1: "/services",
+    buttonText2: "Мэдээ мэдээлэл",
+    buttonLink2: "/blog",
   },
   {
     id: 2,
@@ -46,11 +46,11 @@ const carouselData: CarouselSlide[] = [
       </>
     ),
     description:
-      "There are many variations of passages of Lorem Ipsum available but the dummy majority have suffered dumm to alteration in some form by injected dummy now.",
+      "Бөөрөлжүүтийн цахилгаан станц нь Төвийн бүсийн нэгдсэн сүлжээнд холбогдох бөгөөд одоо ашиглалтад байгаа эх үүсвэрүүдийн боломжит чадал 1101 бөгөөд төслийн эхний блок 150МВт-аар ашиглалтад ороход ТБНС-ний эрчим хүчний чадлыг 13.6%, 300МВт-аар ашиглалтад ороход 27.2%-иар нэмэгдүүлнэ.",
     image: "/images/bg3.jpg",
-    buttonText1: "OUR SERVICES",
+    buttonText1: "Бидний үйлчилгээ",
     buttonLink1: "/services",
-    buttonText2: "CONTACT US",
+    buttonText2: "Холбоо барих",
     buttonLink2: "/contact",
   },
   {
@@ -63,11 +63,11 @@ const carouselData: CarouselSlide[] = [
       </>
     ),
     description:
-      "With decades of experience in the industrial sector, we maintain the highest standards of quality and safety in all our operations and services.",
+      "Бид Эрчим хүчний тогтвортой экосистемийг хөгжүүлэх эрхэм зорилгоо хэрэгжүүлэхдээ нийгэм эдийн засгийн хөгжилд дорвитой хувь нэмрээ оруулах, хүрээлэн буй орчинд ээлтэй үйл ажиллагааг ёс зүйтэй, ил тод, нээлттэй засаглалаар хүргэхээр зорьж байна.",
     image: "/images/bg4.jpg",
-    buttonText1: "ABOUT US",
+    buttonText1: "Бидний тухай",
     buttonLink1: "/about",
-    buttonText2: "OUR TEAM",
+    buttonText2: "Манай хамт олон",
     buttonLink2: "/team",
   },
 ]
@@ -104,7 +104,7 @@ export default function HeroCarousel() {
 };
 
   return (
-    <div className="relative h-[600px] bg-[#0a1631] overflow-hidden">
+    <div className="relative h-[800px] bg-[#0a1631] overflow-hidden">
       {carouselData.map((slide, index) => (
         <div
           key={slide.id}
@@ -129,13 +129,13 @@ export default function HeroCarousel() {
               <div className="flex flex-wrap gap-4">
                 <Link
                   href={slide.buttonLink1}
-                  className="bg-orange-500 text-white px-6 py-3 font-medium hover:bg-orange-600 transition-colors"
+                  className="bg-orange-500 text-white px-6 py-3 font-medium hover:bg-orange-600 transition-colors rounded-sm"
                 >
                   {slide.buttonText1}
                 </Link>
                 <Link
                   href={slide.buttonLink2}
-                  className="border border-white text-white px-6 py-3 font-medium hover:bg-white hover:text-gray-800 transition-colors"
+                  className="border border-white text-white px-6 py-3 font-medium hover:bg-white hover:text-gray-800 transition-colors rounded-sm"
                 >
                   {slide.buttonText2}
                 </Link>
